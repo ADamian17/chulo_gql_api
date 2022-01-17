@@ -4,6 +4,9 @@
   "main": "server.js",
   "author": "Adonis D Martin",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "@prisma/client": "^3.8.1",
     "apollo-server": "^3.6.1",
