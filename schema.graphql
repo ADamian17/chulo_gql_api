@@ -1,9 +1,22 @@
+scalar Date
+
 type Query {
   movies: [Movie!]!
+}
+
+type Mutation {
+  createMovie(
+    title: String!, 
+    image: String!, 
+    description: String!
+    release_year: Int! ): Movie!
 }
 
 type Movie {
   id: ID!
   title: String!
+  image: String!
   description: String!
+  release_year: Int!
+  createdAt: Date! 
 }

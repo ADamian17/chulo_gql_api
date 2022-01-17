@@ -1,17 +1,17 @@
+/* External Modules */
+const { ApolloServer } = require("apollo-server");
+const {ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const fs = require("fs");
 const path = require("path");
 
-const { ApolloServer } = require("apollo-server");
-const {ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
+require('dotenv').config()
 
-// import { PrismaClient } from "@prisma/client";
-
-const PORT = process.env.PORT || 3001;
-
+/* Internal Modules */
 const resolvers = require("./resolvers");
+const context = require("./context");
 
-// const pubSub = new PubSub();
-// const prisma = new PrismaClient();
+/* PORT */
+const PORT = process.env.PORT || 3001;
 
 const typeDefs = fs.readFileSync(
   path.join( __dirname, 'schema.graphql'),
@@ -21,6 +21,7 @@ const typeDefs = fs.readFileSync(
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context,
   plugins: [
     ApolloServerPluginLandingPageGraphQLPlayground
   ]
