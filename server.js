@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 const { ApolloServer } = require("apollo-server");
+const {ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
+
 // import { PrismaClient } from "@prisma/client";
 
 const PORT = process.env.PORT || 3001;
@@ -18,7 +20,10 @@ const typeDefs = fs.readFileSync(
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  plugins: [
+    ApolloServerPluginLandingPageGraphQLPlayground
+  ]
 });
 
 server.listen(PORT).then(({url}) => console.log(`🚀 running at ${url}`));
