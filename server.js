@@ -4,6 +4,8 @@ const path = require("path");
 const { ApolloServer } = require("apollo-server");
 // import { PrismaClient } from "@prisma/client";
 
+const PORT = process.env.PORT || 3001;
+
 const resolvers = require("./resolvers");
 
 // const pubSub = new PubSub();
@@ -19,4 +21,4 @@ const server = new ApolloServer({
   resolvers
 });
 
-server.listen().then(({url}) => console.log(`🚀 running at ${url}`));
+server.listen(PORT).then(({url}) => console.log(`🚀 running at ${url}`));
