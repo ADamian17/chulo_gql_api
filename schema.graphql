@@ -2,6 +2,7 @@ scalar Date
 
 type Query {
   movies: [Movie!]!
+  movie(id: ID!): Movie!
 }
 
 type Mutation {
